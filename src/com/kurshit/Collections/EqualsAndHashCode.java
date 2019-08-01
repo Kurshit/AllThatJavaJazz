@@ -4,9 +4,11 @@ import java.util.HashMap;
 
 public class EqualsAndHashCode {
 
+	static HashMap<Employee,Employee> hm = new HashMap<Employee,Employee>();
+	
 	public static HashMap<Employee,Employee> loadHashMap()
 	{
-		HashMap<Employee,Employee> hm = new HashMap<Employee,Employee>();
+		
 		
 		Employee e1 = new Employee("758039","30061992");
 		Employee e2 = new Employee("1234","08082002");
@@ -15,8 +17,8 @@ public class EqualsAndHashCode {
 		hm.put(e1, e1);
 		hm.put(e2, e2);
 		hm.put(e3, e3);
-		
-		System.out.println(e1);
+		hm.put(e4, e4);
+				
 		return hm;
 	}
 	
@@ -24,6 +26,10 @@ public class EqualsAndHashCode {
 		// TODO Auto-generated method stub
 		
 		loadHashMap();
+		
+		System.out.println(hm.get(new Employee("758039","30061992")));
+		
+		
 		
 	}
 
