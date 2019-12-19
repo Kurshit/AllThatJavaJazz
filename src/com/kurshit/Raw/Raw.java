@@ -1,26 +1,33 @@
 package com.kurshit.Raw;
 
-import java.util.Arrays;
-//IMPORT LIBRARY PACKAGES NEEDED BY YOUR PROGRAM
-//SOME CLASSES WITHIN A PACKAGE MAY BE RESTRICTED
-//DEFINE ANY CLASS AND METHOD NEEDED
-import java.util.List;
 
-import java.util.im
+public class Raw {
 
-import com.kurshit.RandomPractice.BST.Node;
-//CLASS BEGINS, THIS CLASS IS REQUIRED
-public class Raw
-{        
-	// METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
-	
-	
+
 	public static void main(String[] args) {
 		
+		System.out.println(1234/10);
+		System.out.println(1234%10);
+	}
+	
+	public static void insertionSort(int[] arr) {
 		
+		for(int i = 1; i< arr.length; i++) {
+			int key = arr[i];
+			
+			int j = i-1;
+			
+			while(j >= 0 && arr[j] > key) {
+				arr[j+1] = arr[j];
+				j = j -1;
+			}
+			
+			arr[j+1] = key;
+			
+		}
 		
 	}
 
-	// METHOD SIGNATURE ENDS
+
 }
 
