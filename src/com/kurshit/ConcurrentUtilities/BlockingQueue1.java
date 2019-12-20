@@ -13,7 +13,7 @@ public class BlockingQueue1
 		Consumer consume = new Consumer(queue);
 		new Thread(produce).start();
 		new Thread(consume).start();
-		Thread.sleep(2);
+		Thread.sleep(5000);
 	}
 
 }
@@ -62,7 +62,7 @@ class Consumer implements Runnable
 		try
 		{
 			System.out.println(queue.poll());
-			//Thread.sleep(1000);
+			Thread.sleep(1000);
 			System.out.println(queue.poll());
 			System.out.println(queue.poll());
 		}

@@ -1,64 +1,85 @@
 package com.kurshit.Raw;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-//IMPORT LIBRARY PACKAGES NEEDED BY YOUR PROGRAM
-//SOME CLASSES WITHIN A PACKAGE MAY BE RESTRICTED
-//DEFINE ANY CLASS AND METHOD NEEDED
-import java.util.List;
-import java.util.Queue;
-//CLASS BEGINS, THIS CLASS IS REQUIRED
-public class Solution
-{        
-	// METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
-	int removeObstacle(int numRows, int numColumns, List<List<Integer>> lot)
-	{
-		int[][] grid = new int[numRows][numColumns];
-		boolean[][] visited = new boolean[numRows][numColumns];
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
 
-		for(int i = 0  ;i < lot.size(); i++) {
-			List<Integer> sub = lot.get(i);
-			for(int j = 0 ; j < sub.size(); j++) {
-				grid[i][j] = lot.get(i).get(j);
-			}
+
+class ListNode {
+	int val;
+	ListNode next;
+	ListNode(int x) { val = x; }
+}
+
+public class Solution {
+
+	public void addLast(ListNode res, int sum) {
+
+		ListNode ptr = res;
+
+		if(ptr == null) {
+			res = new ListNode(sum);
+			return;
 		}
 
-		int count = 0;
-
-		int[][] directions = new int[][]{{1,0}, {-1,0}, {0, 1}, {0, -1}};
-
-		Queue<int[]> queue = new LinkedList<>();
-		queue.offer(new int[]{0,0});
-		while(!queue.isEmpty()) {
-			int size = queue.size();
-			for(int i = 0 ;i < size; i++) {
-				int[] current = queue.poll();
-				int row = current[0];
-				int column = current[1];
-
-				if(row < 0 || column < 0 || row >= numRows || column>= numColumns || grid[row][column] == 0 || visited[row][column]) {
-					continue;
-				}
-
-				visited[row][column] = true;
-				if(grid[row][column] == 9) {
-					return count;
-				}
-
-				for(int[] dir : directions) {
-					int nr = dir[0] + row;
-					int nc = dir[1] + column;
-					queue.offer(new int[]{nr, nc});
-				}
-			}
-			count++;
+		while(ptr.next != null) {
+			ptr = ptr.next;
 		}
-		return -1;
-	}
-	
-	public static void main(String[] args) {
-		Solution s = new Solution();
-		//s.removeObstacle(3,Arrays.asList(a))
+
+		ptr.next = new ListNode(sum);
+
+
+
 	}
 
+
+	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+		if(l1 == null) {
+			return l2;
+		}    
+
+		if(l2 == null) {
+			return l1;
+		}
+
+		ListNode result = null;
+		int sum = 0;
+		int carry = 0;
+
+		while(l1 != null || l2 != null) {
+
+			int first = l1 != null ? l1.val : 0;
+			int second = l2 != null ? l2.val : 0;
+
+			sum = first + second + carry;
+
+			if(sum >= 10)
+				carry = 1;
+			else 
+				carry = 0;
+
+			sum = sum % 10;
+
+			addLast(result,sum);
+
+			if(l1 != null)
+				l1 = l1.next;
+
+			if(l2 != null)
+				l2 = l2.next;
+
+		}
+
+		if(carry > 0)
+			addLast(result,1);
+
+		return result;
+
+	}
 }
