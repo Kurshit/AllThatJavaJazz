@@ -11,6 +11,12 @@ public class ParallelStreams {
 		return number * 1;
 	}
 	
+	public static int transformObserveThread(int number) {
+		System.out.println("t: " + number + "--" + Thread.currentThread());
+		sleep(1000);
+		return number * 1;
+	}
+	
 	public static boolean sleep(int ms) {
 		try {
 			Thread.sleep(ms);
@@ -123,7 +129,41 @@ public class ParallelStreams {
 		
 		useMultiple(numbers.stream());
 		
+		/*
+		 * Observing Threads - The following code would run sequentially in main thread itself
+		 * 
+		 */
 		
+		System.out.println("\nObserving the threads : ");
+		numbers.stream()
+				.map(e -> transformObserveThread(e))
+				.forEach(e -> {});
+		
+		/*
+		 * Output : 
+		 * 	t: 1--Thread[main,5,main]
+		 *	t: 2--Thread[main,5,main]
+		 */
+				
+		/*
+		 * Now making changes to run it parallaly using parallel streams -
+		 * 
+		 * This would run parallely in different threads
+		 */
+		
+		System.out.println("\nObserving the threads using parallel streams : ");
+		numbers.parallelStream()
+				.map(e -> transformObserveThread(e))
+				.forEach(e -> {});
+		
+		/*
+		 * Output : 
+		 * 
+		 * t: 7--Thread[main,5,main]
+		 *	t: 9--Thread[ForkJoinPool.commonPool-worker-3,5,main]
+		 *	t: 3--Thread[ForkJoinPool.commonPool-worker-2,5,main]
+		 * 
+		 */
 		
 
 	}	
