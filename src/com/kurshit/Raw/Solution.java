@@ -1,85 +1,67 @@
 package com.kurshit.Raw;
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+/*
+ * Question : Take an input from the user from getMeNumber() method and check and then print if that number is positive
+ * or negative. 
  */
 
-
-class ListNode {
-	int val;
-	ListNode next;
-	ListNode(int x) { val = x; }
-}
-
 public class Solution {
+	
+	/*
+	 * This method uses Input Output API's to read message from user using BufferedReader class
+	 */
+	
+	public int getNumber()  {
 
-	public void addLast(ListNode res, int sum) {
+		try {
+			
+			BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 
-		ListNode ptr = res;
-
-		if(ptr == null) {
-			res = new ListNode(sum);
-			return;
+			int value = Integer.parseInt(br.readLine());
+			
+			return value;
+			
+		} catch(Exception e) {
+			System.out.println("Enter valid number");
+			e.printStackTrace();
 		}
-
-		while(ptr.next != null) {
-			ptr = ptr.next;
-		}
-
-		ptr.next = new ListNode(sum);
-
-
+		
+		//if exception occured in reading the number, we will return 0
+		
+		return 0;
 
 	}
+	
+	/*
+	 * Following method checks if given input "number" is positive or negative. 
+	 * If number is positive, it will return "true" if negative (less than 0), it would return false.
+	 * For value = 0, it would return true (0 is positive number).
+	 */
+	
+	public boolean isPositiveNegative(int number) {
+		
+		if(number < 0)
+			return false;
+		else
+			return true;
+		
+	}
 
+	public static void main(String[] args) {
 
-	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
-		if(l1 == null) {
-			return l2;
-		}    
-
-		if(l2 == null) {
-			return l1;
+		Solution s1 = new Solution();
+		
+		int number = s1.getNumber();
+		
+		boolean result = s1.isPositiveNegative(number);
+		
+		if(result) {
+			System.out.println("Number is positive");
+		} else {
+			System.out.println("Number is negative");
 		}
-
-		ListNode result = null;
-		int sum = 0;
-		int carry = 0;
-
-		while(l1 != null || l2 != null) {
-
-			int first = l1 != null ? l1.val : 0;
-			int second = l2 != null ? l2.val : 0;
-
-			sum = first + second + carry;
-
-			if(sum >= 10)
-				carry = 1;
-			else 
-				carry = 0;
-
-			sum = sum % 10;
-
-			addLast(result,sum);
-
-			if(l1 != null)
-				l1 = l1.next;
-
-			if(l2 != null)
-				l2 = l2.next;
-
-		}
-
-		if(carry > 0)
-			addLast(result,1);
-
-		return result;
-
 	}
 }

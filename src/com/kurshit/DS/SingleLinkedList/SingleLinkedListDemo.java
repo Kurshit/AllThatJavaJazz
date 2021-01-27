@@ -19,6 +19,8 @@ public class SingleLinkedListDemo
 			System.out.println("Please select operation : ");
 
 			int ch = s.nextInt();
+			
+			
 
 			switch (ch)
 			{

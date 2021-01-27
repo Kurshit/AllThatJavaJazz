@@ -26,7 +26,7 @@ class DisplayPing implements Runnable
 	public void run()
 	{
 		try
-		{
+		{// called by th1
 			while(true)
 			{
 				System.out.println("PING");

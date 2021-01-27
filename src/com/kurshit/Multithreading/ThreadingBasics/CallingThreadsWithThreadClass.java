@@ -5,8 +5,8 @@ public class CallingThreadsWithThreadClass {
 	public static void main(String[] args) 
 	{
 		ThreadExample th1 = new ThreadExample();
-		th1.start();
-
+		th1.start();	
+		
 	}
 
 }
