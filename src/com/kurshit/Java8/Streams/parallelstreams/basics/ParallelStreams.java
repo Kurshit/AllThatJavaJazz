@@ -71,9 +71,9 @@ public class ParallelStreams {
 		.forEach(System.out :: println);*/
 		
 		/*
-		 * There are to approaches to execute parallel code using streams
+		 * There are two approaches to execute parallel code using streams
 		 * 
-		 * Approach 1: When we oursleves create the streams as below
+		 * Approach 1: When we ourselves create the streams as below
 		 */
 		
 		/*
@@ -102,7 +102,7 @@ public class ParallelStreams {
 		useParallel(numbers.stream()); 
 		
 		/*
-		 * In useParallel - even thought streams that were passed in were STREAM and not parallel stream, we can convert it to parallel. 
+		 * In useParallel - even though streams that were passed in were STREAM and not parallel stream, we can convert it to parallel. 
 		 * Also, if streams were created as parallel streams and passed in to a function, we can change it to sequential()
 		 */
 		
@@ -115,13 +115,13 @@ public class ParallelStreams {
 		 * 
 		 * Unfortunately this is not the case.
 		 * 
-		 * Ans: In this case, the very last one wins. This is goint to affect the behavioir of entire pipeline.
+		 * Ans: In this case, the very last one wins. This is going to affect the behavioir of entire pipeline.
 		 * 
 		 * Just because we make it parallel, does not mean it will run parallely. The very last one is gonna win.
 		 * 
 		 *  The last one -? what does it mean here --
 		 *  
-		 *  Ans - the one before terminal operations. Termical operation is decisive factor and last call before terminal takes over and is executed.
+		 *  Ans - the one before terminal operations. Terminal operation is decisive factor and last call before terminal takes over and is executed.
 		 * 
 		 */
 		
@@ -134,7 +134,7 @@ public class ParallelStreams {
 		 * 
 		 */
 		
-		System.out.println("\nObserving the threads : ");
+		System.out.println("\nObserving the threads : "); // sequential execution
 		numbers.stream()
 				.map(e -> transformObserveThread(e))
 				.forEach(e -> {});
@@ -148,7 +148,7 @@ public class ParallelStreams {
 		/*
 		 * Now making changes to run it parallaly using parallel streams -
 		 * 
-		 * This would run parallely in different threads
+		 * This would run parallely in different threads. Whole thing is running in 
 		 */
 		
 		System.out.println("\nObserving the threads using parallel streams : ");
