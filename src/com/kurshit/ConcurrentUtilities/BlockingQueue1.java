@@ -32,7 +32,7 @@ class Producer implements Runnable
 	{
 		try
 		{
-			queue.offer(null);
+			queue.offer(1);
 			Thread.sleep(1000);
 			queue.offer("2");
 			Thread.sleep(1000);

@@ -43,7 +43,7 @@ class MyThread extends Thread
 	
 	public void run()
 	{
-		s.m1();
+		Sample.m1();
 	}
 }
 public class Mulithreadding1
@@ -55,7 +55,7 @@ public class Mulithreadding1
 		Sample s2 = new Sample();
 		MyThread t1 = new MyThread(s1);
 		t1.start();
-		s2.m1();
+		Sample.m1();
 		
 		try
 		{

@@ -1,7 +1,8 @@
 package com.kurshit.DesignPatterns.CompositionVsInheritance.FavourComposition;
 
 
-/* Title: Favour composition over inheritance. This prog shows how to use composition and solution for problem of IncorrectInheritance package
+/* Title: Favour composition over inheritance. This prog shows how to use composition and solution for problem of
+ *  IncorrectInheritance package
  * Sources : Effective Java - Item 16
  * Refer Notes : Effective Java - Item 16
  * Eclipse :  Survival/com.kurshit.DesignPatterns.CompositionVsInheritance.FavourComposition

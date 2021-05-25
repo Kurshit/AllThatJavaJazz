@@ -42,7 +42,7 @@ public class ComparatorExample
  			}
  		});*/
  		
- 		Collections.sort(list, (HashMap<String,Object> m1, HashMap<String,Object> m2) -> m1.get("userId").toString().compareTo(m2.get("userId").toString()));
+ 		Collections.sort(list, (m1, m2) -> m1.get("userId").toString().compareTo(m2.get("userId").toString()));
  		
  		System.out.println(list);
  		
